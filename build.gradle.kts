@@ -8,6 +8,10 @@ plugins {
 group = "com.nexxtap.utilities"
 version = "1.0.0"
 
+kotlin {
+    jvmToolchain(21)
+}
+
 android {
     namespace = "com.nexxtap.utilities.testattestsdk"
     compileSdk = 34
@@ -28,8 +32,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     publishing {
@@ -55,7 +59,7 @@ publishing {
             pom {
                 name.set("Test Attestation SDK")
                 description.set("Play Integrity wrapper SDK for device attestation.")
-                url.set("https://github.com/nexxtap/testattestsdk")
+                url.set("https://github.com/tradjick/testattessdk")
 
                 licenses {
                     license {
@@ -80,8 +84,14 @@ publishing {
             }
         }
     }
-}
 
+    repositories {
+        maven {
+            name = "localBundle"
+            url = uri(layout.buildDirectory.dir("repo"))
+        }
+    }
+}
 afterEvaluate {
     publishing {
         publications.named<MavenPublication>("release") {
