@@ -34,7 +34,7 @@ More attestation providers will be introduced in upcoming releases.
 
 ## 🛠 Requirements
 
--   Minimum Android API Level: (specify your `minSdk`)
+-   Minimum Android API Level: R11
 -   Kotlin support
 -   Google Play Services with Play Integrity API enabled
 -   Backend service for nonce generation
@@ -109,10 +109,10 @@ The `integrityToken` must be verified server-side.
 
 ## 🔐 Security Recommendations
 
--   Always validate the integrity token on your backend.\
--   Do not rely solely on client-side verification.\
+-   Always validate the integrity token on your backend.
+-   Do not rely solely on client-side verification.
 -   Ensure nonce generation is cryptographically secure and
-    short-lived.\
+    short-lived.
 -   Enable and configure Play Integrity in the Google Play Console.
 
 ------------------------------------------------------------------------
@@ -124,10 +124,6 @@ This project is licensed under the **GNU General Public License v3.0**.
 See the `LICENSE` file included in this repository for full terms.
 
 ------------------------------------------------------------------------
-
-## 👤 Maintainer
-
-NexxTap Utilities
 
 ------------------------------------------------------------------------
 

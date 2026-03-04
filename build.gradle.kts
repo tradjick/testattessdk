@@ -10,7 +10,6 @@ version = "1.0.0"
 
 android {
     namespace = "com.nexxtap.utilities.testattestsdk"
-
     compileSdk = 34
 
     defaultConfig {
@@ -48,47 +47,49 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            artifactId = "testattestsdk"
 
-                groupId = "com.nexxtap.utilities"
-                artifactId = "testattestsdk"
-                version = "1.0.0"
+            pom {
+                name.set("Test Attestation SDK")
+                description.set("Play Integrity wrapper SDK for device attestation.")
+                url.set("https://github.com/nexxtap/testattestsdk")
 
-                pom {
-                    name.set("Test Attestation SDK")
-                    description.set("Play Integrity wrapper SDK for device attestation.")
-                    url.set("https://github.com/nexxtap/testattestsdk")
-
-                    licenses {
-                        license {
-                            name.set("Apache License 2.0")
-                            url.set("https://www.apache.org/licenses/LICENSE-2.0")
-                        }
+                licenses {
+                    license {
+                        name.set("Apache License 2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0")
                     }
+                }
 
-                    developers {
-                        developer {
-                            id.set("nexxtap")
-                            name.set("NexxTap")
-                            email.set("dev@nexxtap.com")
-                        }
+                developers {
+                    developer {
+                        id.set("webgatetec")
+                        name.set("Web Gate Technologies")
+                        email.set("chris@webgatetec.com")
                     }
+                }
 
-                    scm {
-                        connection.set("scm:git:https://github.com/nexxtap/testattestsdk.git")
-                        developerConnection.set("scm:git:ssh://git@github.com:nexxtap/testattestsdk.git")
-                        url.set("https://github.com/nexxtap/testattestsdk")
-                    }
+                scm {
+                    connection.set("scm:git:https://github.com/tradjick/testattessdk.git")
+                    developerConnection.set("scm:git:ssh://git@github.com:tradjick/testattessdk.git")
+                    url.set("https://github.com/tradjick/testattessdk")
                 }
             }
         }
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications.named<MavenPublication>("release") {
+            from(components["release"])
+        }
+    }
+}
+
 signing {
-    sign(publishing.publications)
+    sign(publishing.publications["release"])
 }
